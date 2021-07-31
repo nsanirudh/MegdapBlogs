@@ -20,6 +20,14 @@ Factors that impact a good ASR engine are(Specific to Audio Input):
 
 # Why do we need ASR
 
+# What we need to know to understand ASR:
+
+* Bayes Theorem
+* HMM
+* GMM
+* Basic language and phone understanding
+
+
 # What do we need to create an ASR Engine 
 
 In kaldi the workflow used to build an ASR engine is, an Acoustic model, a Language model and Lexicon model.
