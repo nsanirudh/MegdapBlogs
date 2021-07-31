@@ -42,5 +42,7 @@ In ASR, understanding how we hear is more valuable than understanding how we spe
 
 # Acoustic, Lexicon & Language Model:
 
+![ASR](resources/ASR.JPG "ASR")
+
 
 
