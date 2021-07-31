@@ -4,5 +4,5 @@
 
 TBD:
 
-Compile resources from OneNote
-Compile .txt files from local machine
+* Compile resources from OneNote
+* Compile .txt files from local machine
