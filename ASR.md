@@ -1,15 +1,15 @@
 # Hello World of ASR
 
-ASR stands for Automatic Speech Recognition. Which essentially means taking a continuous audio speech signal
+ASR or Automatic Speech Recognition is a process which takes a continuous audio speech signal
 and converts it into it's equivalent text. This is an introductory blog around the process of performing ASR
-using the workflow as would be in a kaldi environment.
+using the workflow to implement it in a kaldi environment.
 
 What we need:
 
 * Lots of audio files
-* All their corresponding transcripts.
+* All their corresponding transcripts
 
-Factors that impact a good ASR engine are(Specific to Audio Input):
+(Specific to Audio Input) Factors that impact a good ASR engine are:
 
 * Volume
 * Number of speakers
