@@ -1,3 +1,12 @@
+# Why do we need ASR
+
+Speech recognition technology allows computers to take spoken audio, interpret it and generate text from it. 
+But how do computers understand human speech? The short answer is…the wonder of signal processing. Speech 
+is simply a series of sound waves created by our vocal chords when they cause air to vibrate around them.
+These sound waves are recorded by a microphone, and then converted into an electrical signal. The signal 
+is then processed using advanced signal processing technologies, isolating syllables and words. Over time, the computer can learn to understand speech from experience, thanks to incredible recent advances in artificial intelligence and machine learning. But signal processing is what makes it all possible.
+
+
 # Hello World of ASR
 
 ASR or Automatic Speech Recognition is a process which takes a continuous audio speech signal
@@ -18,7 +27,6 @@ What we need:
 * Word sped
 * Background Noise
 
-# Why do we need ASR
 
 # What we need to know to understand ASR:
 
