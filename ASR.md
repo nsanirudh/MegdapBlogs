@@ -62,3 +62,30 @@ In ASR, understanding how we hear is more valuable than understanding how we spe
 
 
 
+# Hyperparameter Tuning
+ If you have bad monophone alignments, you will have bad triphone alignments. If you have bad triphone alignments, 
+ then you will train a bad neural net. As such, you should take some time to tweak parameters on each stage, to 
+ make sure your model and alignments are good to pass on to the next stage.
+
+Variations are made to the feature extraction script:
+
+* Monophones (steps/train_mono.sh)
+  * boost_silence=1.25
+  * num_iters= 20 → 40
+  * totgauss= 1000 → 2000
+* Triphones (steps/train_deltas.sh)
+  *  boost_silence= 1.25
+  *  num_iters= 20 → 40
+  *  numleaves= 2000 → 5000
+  *  totgauss= 10000 → 50000
+* Triphones + LDA + MLLT (steps/train_lda_mllt.sh)
+    * --left-context= 2 → 10
+    * --right-context= 2 → 10
+    * num_iters= 20 → 40
+    * numleaves= 2500 → 7500
+    * totgauss= 15000 → 75000  
+
+* Triphones + LDA + MLLT + SAT (steps/train_sat.sh)
+    * num_iters= 20 → 40
+    * numleaves= 2500 → 10000
+    * totgauss= 15000 → 200000
