@@ -88,8 +88,11 @@ Once we train the model we analyse the results using two major Metrics:
 The lower the values of both, the better the model performance. Since we train several models along the pipeline, we 
 have the flexibility to choose the best one.
 
+# Decoding And Server Side Hosting
+
 Once we have trained our model using Kaldi, we construct a decoding lattice using the scripts with an input audio file
-to generate the final transcript from the Audio file.
+to generate the final transcript from the Audio file. We then integrate this model with a RESTful API to allow smooth 
+communication. More on this later!
 
 Stay tuned for More Technical and In-Depth Machine Learning blogs from *Megdap*!
 
