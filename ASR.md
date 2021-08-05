@@ -6,7 +6,9 @@ is simply a series of sound waves created by our vocal chords when they cause ai
 These sound waves are recorded by a microphone, and then converted into an electrical signal. The signal 
 is then processed using advanced signal processing technologies, isolating syllables and words. Over time, the computer can learn to understand speech from experience, thanks to incredible recent advances in artificial intelligence and machine learning. But signal processing is what makes it all possible.
 
+Here at *Megdap*, we strive to solve this problem for all Indic languages. 
 
+------
 # Hello World of ASR
 
 ASR or Automatic Speech Recognition is a process which takes a continuous audio speech signal
@@ -27,25 +29,33 @@ What we need:
 * Word speed
 * Background Noise
 
-
+------
 # What we need to know to understand ASR:
+
+I will be writing individual blogs related to the concepts explained below in the coming days.
 
 * Bayes Theorem
 * HMM
 * GMM
 * Basic language and phone understanding
+------
 
+# What we need to create an ASR Engine?
 
-# What do we need to create an ASR Engine 
+We mainly build the following:
+* Acoustic Model
+* Language Model
+* Lexicon Model
 
 In kaldi the workflow used to build an ASR engine is, an Acoustic model, a Language model and Lexicon model.
 The acoustic model would help us understand the audio signal, whereas the language model would help us predict the
 next word in a sequence. The lexicon model is a pronunciation model.
 
+In ASR, understanding how we hear is more valuable than understanding how we speak in feature extraction.
 The primary objective of speech recognition is to build a statistical model to infer the text sequences 
 (say “cat sits on a mat”) from a sequence of feature vectors.
 
-There is some golden content to be found in phonetics and linguistics, but regardless ASR is about finding the most 
+There is lots of golden content to be found in phonetics and linguistics. Regardless ASR is about finding the most 
 likely word sequence given an audio and train these probability models with the provided transcripts.
 
 The basic idea around building an ASR engine would revolve around understanding the speech signal. We need to 
@@ -54,45 +64,37 @@ would involve applying a series of mathematical operations to extract features. 
 Coefficient Analysis is the conversion of that audio signal to the essential speech features required to train an 
 acoustic model. A spectrogram is the conversion of an audio signal into the frequency domain using the fourier transform. 
 
-In ASR, understanding how we hear is more valuable than understanding how we speak in feature extraction.
-
-# Acoustic, Lexicon & Language Model:
+# Acoustic, Lexicon & Language Model Workflow Diagram:
 
 ![ASR](resources/ASR.JPG "ASR")
 
-
-
 # Hyperparameter Tuning
- If you have bad monophone alignments, you will have bad triphone alignments. If you have bad triphone alignments, 
- then you will train a bad neural net. As such, you should take some time to tweak parameters on each stage, to 
- make sure your model and alignments are good to pass on to the next stage.
 
-Variations are made to the feature extraction script:
+While training, we run these extracted features through a lengthy pipeline. Starting with monophone
+training, all the way to Neural Network training.
 
-* Monophones (steps/train_mono.sh)
-  * boost_silence=1.25
-  * num_iters= 20 → 40
-  * totgauss= 1000 → 2000
-* Triphones (steps/train_deltas.sh)
-  *  boost_silence= 1.25
-  *  num_iters= 20 → 40
-  *  numleaves= 2000 → 5000
-  *  totgauss= 10000 → 50000
-* Triphones + LDA + MLLT (steps/train_lda_mllt.sh)
-    * --left-context= 2 → 10
-    * --right-context= 2 → 10
-    * num_iters= 20 → 40
-    * numleaves= 2500 → 7500
-    * totgauss= 15000 → 75000  
+If you have bad monophone alignments, you will have bad triphone alignments. If you have bad triphone alignments, 
+then you will train a bad neural net. As such, you should take some time to tweak parameters on each stage, to 
+make sure your model and alignments are good to pass on to the next stage.
 
-* Triphones + LDA + MLLT + SAT (steps/train_sat.sh)
-    * num_iters= 20 → 40
-    * numleaves= 2500 → 10000
-    * totgauss= 15000 → 200000
-  
--------
+To tackle this problem we run several in-house analysis scripts to understand the Alignments of the auido and their
+transcripts. Then we have an iterative cycle of improving our data quality with our Data Team.
+
+Once we train the model we analyse the results using two major Metrics:
+
+* Word Error Rate(WER)
+* Sentence Error Rate(SER)
+
+The lower the values of both, the better the model performance. Since we train several models along the pipeline, we 
+have the flexibility to choose the best one.
+
+Once we have trained our model using Kaldi, we construct a decoding lattice using the scripts with an input audio file
+to generate the final transcript from the Audio file.
+
+Stay tuned for More Technical and In-Depth Machine Learning blogs from *Megdap*!
+
+Here's the link to our Website: 
+
+Regards: Team *Megdap*
 
 
-analyzer to csv- takes logs and puts it into csv format.
-
-no_stats_related_phone_script checks the HMM states with no MFCC features(which are warnings in the training process).
