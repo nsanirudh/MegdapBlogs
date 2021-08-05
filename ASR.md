@@ -89,3 +89,10 @@ Variations are made to the feature extraction script:
     * num_iters= 20 → 40
     * numleaves= 2500 → 10000
     * totgauss= 15000 → 200000
+  
+-------
+
+
+analyzer to csv- takes logs and puts it into csv format.
+
+no_stats_related_phone_script checks the HMM states with no MFCC features(which are warnings in the training process).
