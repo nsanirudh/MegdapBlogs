@@ -24,7 +24,7 @@ What we need:
 * Number of speakers
 * Pitch
 * Silences
-* Word sped
+* Word speed
 * Background Noise
 
 
